@@ -6,14 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class category extends Model
 {
-    protected $table = 'categories';
+    // protected $table = 'categories';
 
     protected $fillable = ['title', 'description', 'subcategory_id', 'slug'];
 
 
 
-    public function products()
+   
+
+    public function cat()
     {
-        return $this->belongsToMany(product::class);
+        return $this->hasOne(subcategory::class);
     }
 }

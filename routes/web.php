@@ -1,5 +1,6 @@
 <?php
 
+use Faker\Factory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,3 +31,11 @@ Route::group(['prefix' => 'product', 'middleware' => ['auth']], function () {
     Route::get('/create', 'ProductController@create')->name('product.create');
     Route::get('/delete/{id}', 'ProductController@delete')->name('product.delete');
 });
+
+Route::get('/show', 'ProductController@show');
+
+
+//factory add for dummy data
+// Route::get('/products/insert', function () {
+//     factory(\App\product::class, 3)->create();
+// });

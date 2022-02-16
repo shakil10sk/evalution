@@ -141,9 +141,24 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $products = product::all();
+        $category = category::all();
+        $subcategory = subcategory::all();
+        // $products->subcategories()->all();
+
+        // $products = DB::table('products AS PRD')
+        //     ->join('subcategories AS SUBCAT', function ($join) {
+        //         $join->on('SUBCAT.id', '=', 'PRD.subcategory_id');
+        //     })
+        //     ->join('categories AS CAT', function ($join) {
+        //         $join->on('CAT.id', '=', 'SUBCAT.category_id');
+        //     })
+        //     ->select('PRD.id', 'PRD.title as title', 'PRD.description', 'PRD.price', 'CAT.title as categoryName', 'SUBCAT.title as subcategoryName')
+        //     ->get();
+        // dd($products->cat);
+        return view('show', compact('products', 'category', 'subcategory'));
     }
 
     /**

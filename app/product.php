@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class product extends Model
 {
-    use HasFactory;
+    // use App\HasFactory;
+
     protected $fillable = [
         'title',
         'description',
@@ -16,14 +17,17 @@ class product extends Model
         'thumbnail',
     ];
 
-
-    public function categories()
-    {
-        return $this->belongsToMany(category::class);
-    }
-
     public function subcategories()
     {
         return $this->belongsToMany(subcategory::class);
+    }
+    public function subcat()
+    {
+        return $this->hasMany(subcategory::class);
+    }
+
+    public function scat()
+    {
+        return $this->hasMany(\App\subcategory::class, 'id', 'subcategory_id');
     }
 }
